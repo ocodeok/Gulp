@@ -1,0 +1,23 @@
+$main-font-size: 22px;
+
+@mixin ph {
+	@media (max-width: 700px) {
+		@content;
+	}
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-size: 16px;
+	font-family: Arial;
+	line-height: 1.5;
+	@include ph {
+		color: #fff;
+		background-color: red;
+	}
+
+	background-image: url("./asfa.jpg");
+}
