@@ -8,7 +8,7 @@ const initialPlugins = require("../config/initialPlugins");
 const plumber = require("gulp-plumber"); // ловим ошибки при сборке
 const notify = require("gulp-notify"); // отображаем ошибки
 const babel = require("gulp-babel"); // Конвертация современнго js в прошлое поколение. Для конфигурации используется плагин "browserslist" и файл package.json
-const webpack = require("webpack-stream");
+const webpackStream = require("webpack-stream");
 
 // Обработка JS
 const js = () => {
@@ -22,7 +22,11 @@ const js = () => {
 			})
 		)
 		.pipe(babel())
-		.pipe(webpack(initialPlugins.webpack))
+		.pipe(webpackStream(initialPlugins.webpack))
+		.on("error", function (err) {
+			console.error("WEBPACK ERROR", err);
+			this.emit("end"); // Don't stop the rest of the task
+		})
 		.pipe(dest(path.js.dest, { sourcemaps: true }));
 };
 

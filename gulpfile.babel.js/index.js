@@ -4,16 +4,16 @@ const { watch, series, parallel } = require("gulp");
 const browserSync = require("browser-sync").create();
 
 // Конфигуркция Gulp
-const path = require("./Gulp/config/path");
-const initalPlugins = require("./Gulp/config/initialPlugins");
+const path = require("./config/path");
+const initalPlugins = require("./config/initialPlugins");
 
 // Задачи
-const clear = require("./Gulp/tasks/clear");
-const html = require("./Gulp/tasks/html");
-const scss = require("./Gulp/tasks/scss");
-const js = require("./Gulp/tasks/js");
-const img = require("./Gulp/tasks/img");
-const fonts = require("./Gulp/tasks/fonts");
+const clear = require("./tasks/clear");
+const html = require("./tasks/html");
+const scss = require("./tasks/scss");
+const js = require("./tasks/js");
+const img = require("./tasks/img");
+const fonts = require("./tasks/fonts");
 
 // Локалные сервер
 const server = () => {
